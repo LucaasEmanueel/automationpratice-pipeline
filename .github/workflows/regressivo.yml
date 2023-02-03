@@ -19,7 +19,9 @@ jobs:
           cache: maven
 
       - name: Instalar o Chrome
-        uses: logikal-io/install-chrome@v1
+        run: |
+          wget https://dl.google.com/linux/direct/google-chrome-stable_current_amd64.deb
+          sudo apt install ./google-chrome*.deb
 
       - name: Instalar o ChromeDriver
         uses: nanasess/setup-chromedriver@v1
