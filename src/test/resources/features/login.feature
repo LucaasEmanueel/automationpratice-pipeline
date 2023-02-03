@@ -1,6 +1,6 @@
 # language: pt
 
-  @login
+  @login @all
   Funcionalidade: Login
     Eu como usuário do sistema
     Quero fazer login
