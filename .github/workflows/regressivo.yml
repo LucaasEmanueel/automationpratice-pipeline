@@ -5,6 +5,8 @@ on:
    branches: [ master ]
   pull_request:
     branches: [ master ]
+  schedule:
+    - cron: '*/15 10 * * 1-5'
 
 jobs:
   RunTest:
@@ -34,6 +36,10 @@ jobs:
 
       - name: Run Tests
         run: mvn test -Dtest=RunCucumber -Dbrowser=chrome-ci cluecumber-report:reporting
+
+      - name: Gerar Relatorio
+        if: always()
+        run: mvn cluecumber-report:reporting
 
       - name: Arquivar relatorio de testes
         if: always()
