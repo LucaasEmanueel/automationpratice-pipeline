@@ -5,6 +5,8 @@ on:
    branches: [ master ]
   pull_request:
     branches: [ master ]
+  schedule:
+    - cron: '* 7 * * 1-5'
 
 jobs:
   RunTest:
@@ -33,7 +35,7 @@ jobs:
           sudo Xvfb -ac :99 -screen 0 1280x1024x24 > /dev/null 2>&1 & # optional
 
       - name: Run Tests
-        run: mvn test -Dtest=RunCucumber -Dbrowser=chrome-ci
+        run: mvn test -Dtest=RunCucumber -Dbrowser=chrome-ci cluecumber-report:reporting
 
       - name: Gerar Relatorio
         if: always()
@@ -45,27 +47,3 @@ jobs:
         with:
           name: report-execution
           path: "**/formated-report/"
-
-      - name: Enviar notificacao Slack com SUCESSO
-        uses: rtCamp/action-slack-notify@v2
-        if: ${{ success() }}
-        env:
-          SLACK_WEBHOOK: ${{ secrets.SLACK_WEBHOOK }}
-          SLACK_CHANNEL: notify-test-in-slack
-          SLACK_COLOR: ${{ job.status }}
-          SLACK_ICON: https://w7.pngwing.com/pngs/367/375/png-transparent-success-kid-child-computer-icons-oh-baby-child-face-toddler-thumbnail.png
-          SLACK_MESSAGE: 'Teste executado com SUCESSO! :dardo_no_alvo: :olhos_de_estrela:'
-          SLACK_TITLE: 'Status dos testes :olho_balao:'
-          SLACK_USERNAME: SUCESSO
-
-      - name: Enviar notificacao Slack com FALHA
-          uses: rtCamp/action-slack-notify@v2
-          if: ${{ failure() }}
-          env:
-            SLACK_WEBHOOK: ${{ secrets.SLACK_WEBHOOK }}
-            SLACK_CHANNEL: notify-test-in-slack
-            SLACK_COLOR: ${{ job.status }}
-            SLACK_ICON: https://w7.pngwing.com/pngs/814/922/png-transparent-inside-out-sadness-http-404-error-message-web-browser-computer-servers-pixar-miscellaneous-pixar-electric-blue-thumbnail.png
-            SLACK_MESSAGE: 'Teste executado com FALHA! :choramingando: :espirrando:'
-            SLACK_TITLE: 'Status dos testes :olho_balao:'
-            SLACK_USERNAME: FALHA
