@@ -52,8 +52,8 @@ jobs:
           SLACK_CHANNEL: notify-test-in-slack
           SLACK_COLOR: ${{ job.status }}
           SLACK_ICON: https://w7.pngwing.com/pngs/367/375/png-transparent-success-kid-child-computer-icons-oh-baby-child-face-toddler-thumbnail.png
-          SLACK_MESSAGE: 'Teste AGENDADO executado com SUCESSO! :dardo_no_alvo: :olhos_de_estrela:'
-          SLACK_TITLE: 'Status dos testes :olho_balao:'
+          SLACK_MESSAGE: 'Teste AGENDADO executado com SUCESSO! :dardo_no_alvo:'
+          SLACK_TITLE: 'Status dos testes :olho_balão:'
           SLACK_USERNAME: SUCESSO
 
       - name: Enviar notificacao Slack com FALHA
@@ -64,6 +64,6 @@ jobs:
           SLACK_CHANNEL: notify-test-in-slack
           SLACK_COLOR: ${{ job.status }}
           SLACK_ICON: https://w7.pngwing.com/pngs/814/922/png-transparent-inside-out-sadness-http-404-error-message-web-browser-computer-servers-pixar-miscellaneous-pixar-electric-blue-thumbnail.png
-          SLACK_MESSAGE: 'Teste AGENDADO executado com FALHA! :choramingando: :espirrando:'
-          SLACK_TITLE: 'Status dos testes :olho_balao:'
+          SLACK_MESSAGE: 'Teste AGENDADO executado com FALHA! :choramingando:'
+          SLACK_TITLE: 'Status dos testes :olho_balão:'
           SLACK_USERNAME: FALHA
