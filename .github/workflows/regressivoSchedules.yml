@@ -1,10 +1,8 @@
 name: Testes Regressivos
 
 on:
-  push:
-   branches: [ master ]
-  pull_request:
-    branches: [ master ]
+  schedule:
+    - cron: '* 7 * * 1-5'
 
 jobs:
   RunTest:
@@ -54,7 +52,7 @@ jobs:
           SLACK_CHANNEL: notify-test-in-slack
           SLACK_COLOR: ${{ job.status }}
           SLACK_ICON: https://w7.pngwing.com/pngs/367/375/png-transparent-success-kid-child-computer-icons-oh-baby-child-face-toddler-thumbnail.png
-          SLACK_MESSAGE: 'Teste executado com SUCESSO! :dardo_no_alvo: :olhos_de_estrela:'
+          SLACK_MESSAGE: 'Teste AGENDADO executado com SUCESSO! :dardo_no_alvo: :olhos_de_estrela:'
           SLACK_TITLE: 'Status dos testes :olho_balao:'
           SLACK_USERNAME: SUCESSO
 
@@ -66,6 +64,6 @@ jobs:
             SLACK_CHANNEL: notify-test-in-slack
             SLACK_COLOR: ${{ job.status }}
             SLACK_ICON: https://w7.pngwing.com/pngs/814/922/png-transparent-inside-out-sadness-http-404-error-message-web-browser-computer-servers-pixar-miscellaneous-pixar-electric-blue-thumbnail.png
-            SLACK_MESSAGE: 'Teste executado com FALHA! :choramingando: :espirrando:'
+            SLACK_MESSAGE: 'Teste AGENDADO executado com FALHA! :choramingando: :espirrando:'
             SLACK_TITLE: 'Status dos testes :olho_balao:'
             SLACK_USERNAME: FALHA
