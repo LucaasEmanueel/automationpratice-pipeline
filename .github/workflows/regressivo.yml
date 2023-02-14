@@ -59,13 +59,13 @@ jobs:
           SLACK_USERNAME: SUCESSO
 
       - name: Enviar notificacao Slack com FALHA
-          uses: rtCamp/action-slack-notify@v2
-          if: ${{ failure() }}
-          env:
-            SLACK_WEBHOOK: ${{ secrets.SLACK_WEBHOOK }}
-            SLACK_CHANNEL: notify-test-in-slack
-            SLACK_COLOR: ${{ job.status }}
-            SLACK_ICON: https://w7.pngwing.com/pngs/814/922/png-transparent-inside-out-sadness-http-404-error-message-web-browser-computer-servers-pixar-miscellaneous-pixar-electric-blue-thumbnail.png
-            SLACK_MESSAGE: 'Teste executado com FALHA! :choramingando: :espirrando:'
-            SLACK_TITLE: 'Status dos testes :olho_balao:'
-            SLACK_USERNAME: FALHA
+        uses: rtCamp/action-slack-notify@v2
+        if: ${{ failure() }}
+        env:
+          SLACK_WEBHOOK: ${{ secrets.SLACK_WEBHOOK }}
+          SLACK_CHANNEL: notify-test-in-slack
+          SLACK_COLOR: ${{ job.status }}
+          SLACK_ICON: https://w7.pngwing.com/pngs/814/922/png-transparent-inside-out-sadness-http-404-error-message-web-browser-computer-servers-pixar-miscellaneous-pixar-electric-blue-thumbnail.png
+          SLACK_MESSAGE: 'Teste executado com FALHA! :choramingando: :espirrando:'
+          SLACK_TITLE: 'Status dos testes :olho_balao:'
+          SLACK_USERNAME: FALHA
